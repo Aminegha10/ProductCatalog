@@ -32,9 +32,9 @@
 | ------------------------------- | ------------------------------------- |
 | ![Home](./screenshot/2.png) | ![Filters](./screenshot/1.png) |
 
-|  Footer View                    |  SearchFilter View                 |
-| ------------------------------- | ------------------------------------- |
-| ![Home](./screenshot/home.png) | ![Filters](./screenshot/3.png) |
+ SearchFilter View                 |
+|------------------------------------- |
+ ![Filters](./screenshot/3.png) |
 
 |  Footer View                    |  Noproduct filtred View                 |
 | ------------------------------- | ------------------------------------- |
