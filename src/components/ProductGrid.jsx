@@ -17,7 +17,7 @@ export default function ProductGrid({ products, favorites, toggleFavorite, clear
       ) : (
         <div className="col-span-full text-center py-12">
           <p className="text-lg text-muted-foreground">No products match your filters</p>
-          <Button variant="outline" className="mt-4" onClick={clearFilters}>
+          <Button variant="outline" className="mt-4 cursor-pointer bg-purple-500" onClick={clearFilters}>
             Clear Filters
           </Button>
         </div>
