@@ -1,6 +1,9 @@
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
+
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+import { Slider } from "@/components/ui/slider"
+import { Button } from "@/components/ui/button"
+import { useState, useEffect } from "react"
 
 export default function FilterContent({
   priceRange,
@@ -9,27 +12,111 @@ export default function FilterContent({
   setSelectedCategories,
   categories,
 }) {
+  const [isSliding, setIsSliding] = useState(false)
+  const [maxPrice, setMaxPrice] = useState(priceRange[1])
+
+  useEffect(() => {
+    setMaxPrice(priceRange[1])
+  }, [priceRange])
+
+  const handleSliderChange = (value) => {
+    const newMaxPrice = value[0] // Slider returns array even for single value
+    setMaxPrice(newMaxPrice)
+    setPriceRange([0, newMaxPrice]) // Always start from 0
+  }
+
+  const handleSliderStart = () => {
+    setIsSliding(true)
+  }
+
+  const handleSliderEnd = () => {
+    setIsSliding(false)
+  }
+
   return (
     <div className="space-y-6">
-      <div>
-        <h3 className="font-semibold mb-3">Price Range</h3>
-        <Slider
-        
-          value={priceRange}
-          onValueChange={setPriceRange}
-          max={1000}
-          step={1}
-          className="mb-2 bg-purple-400"
-        />
-        <div className="flex justify-between text-sm text-muted-foreground">
-          <span>${priceRange[0]}</span>
-          <span>${priceRange[1]}</span>
+      <div className="relative">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold text-purple-900">Max Price</h3>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setPriceRange([0, 1000])
+              setMaxPrice(1000)
+            }}
+            className="h-6 px-2 text-xs text-purple-500 hover:text-white hover:bg-purple-500 transition-all duration-200 rounded-md"
+          >
+            Clear
+          </Button>
         </div>
+
+        <div
+          className={`transition-all duration-200 ${
+            isSliding ? "bg-purple-50 p-3 rounded-lg border border-purple-200" : "p-1"
+          }`}
+        >
+          <Slider
+            value={[maxPrice]} // Single value in array
+            onValueChange={handleSliderChange}
+            onPointerDown={handleSliderStart}
+            onPointerUp={handleSliderEnd}
+            max={1000}
+            min={0}
+            step={1}
+            className={`mb-2 transition-all duration-200 ${isSliding ? "scale-105" : ""} 
+              [&_[role=slider]]:bg-purple-600 
+              [&_[role=slider]]:border-purple-600 
+              [&_[role=slider]]:hover:bg-purple-700
+              [&_.slider-track]:bg-purple-200
+              [&_.slider-range]:bg-purple-600`}
+          />
+        </div>
+
+        <div className="flex justify-between text-sm">
+          <span
+            className={`font-medium transition-colors duration-200 ${
+              isSliding ? "text-purple-700" : "text-purple-500"
+            }`}
+          >
+            $0
+          </span>
+          <span
+            className={`font-medium transition-colors duration-200 ${
+              isSliding ? "text-purple-700" : "text-purple-500"
+            }`}
+          >
+            ${maxPrice}
+          </span>
+        </div>
+
+        <div className="mt-2 text-center">
+          <span className="text-xs text-purple-400">Showing products up to ${maxPrice}</span>
+        </div>
+
+        {isSliding && (
+          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-2 py-1 rounded text-xs font-medium animate-pulse">
+            Max: ${maxPrice}
+          </div>
+        )}
       </div>
 
       <div>
-        <h3 className="font-semibold mb-3">Categories</h3>
-         <div className="space-y-2">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold text-purple-900">Categories</h3>
+          {selectedCategories.length > 0 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setSelectedCategories([])}
+              className="h-6 px-2 text-xs text-purple-500 hover:text-white hover:bg-purple-500 transition-all duration-200 rounded-md"
+            >
+              Clear ({selectedCategories.length})
+            </Button>
+          )}
+        </div>
+
+        <div className="space-y-2">
           {categories.map((category) => (
             <div
               key={category}
@@ -64,5 +151,5 @@ export default function FilterContent({
         </div>
       </div>
     </div>
-  );
+  )
 }

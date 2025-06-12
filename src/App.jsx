@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import NavBar from "./components/Navbar";
 import SearchBar from "./components/SearchBar";
 import Sidebar from "./components/Sidebar";
 import ProductGrid from "./components/ProductGrid";
@@ -161,9 +162,9 @@ export default function ProductsCatalog() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white ">
       {/* Navigation */}
-      {/* <Navbar
+      <NavBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         favoritesCount={favorites.length}
@@ -173,94 +174,9 @@ export default function ProductsCatalog() {
         setSelectedCategories={setSelectedCategories}
         categories={categories}
         clearFilters={clearFilters}
-      /> */}
-      <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-                ShopHub
-              </h1>
-            </div>
-
-            <div className="hidden md:flex flex-1 max-w-md mx-8">
-              <SearchBar
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-              />
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="hidden md:flex text-purple-600 hover:text-purple-800 hover:bg-purple-100"
-              >
-                <User className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="relative text-purple-600 hover:text-purple-800 hover:bg-purple-100"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-pink-500 hover:bg-pink-600">
-                  {favorites.length}
-                </Badge>
-              </Button>
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="md:hidden border-purple-200 text-purple-600"
-                  >
-                    <Filter className="h-4 w-4" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="w-80 border-r-purple-200">
-                  <SheetHeader>
-                    <SheetTitle className="text-purple-800">Filters</SheetTitle>
-                    <SheetDescription>
-                      Refine your product search
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="mt-6">
-                    <FilterContent
-                      priceRange={priceRange}
-                      setPriceRange={setPriceRange}
-                      selectedCategories={selectedCategories}
-                      setSelectedCategories={setSelectedCategories}
-                      categories={categories}
-                    />
-                  </div>
-                  <div className="mt-6">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full border-purple-200 text-purple-600 hover:bg-purple-50"
-                      onClick={clearFilters}
-                    >
-                      Clear Filters
-                    </Button>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-          </div>
-
-          {/* Mobile Search */}
-          <div className="md:hidden pb-4">
-            <SearchBar
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-            />
-          </div>
-        </div>
-      </nav>
-
-     
-
+      />
+      
+      {/* Main Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex gap-8">
           {/* Desktop Filters Sidebar */}
