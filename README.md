@@ -30,15 +30,15 @@
 
 | 🏠 Home View                    | 🔍 Filters & Sorting                  |
 | ------------------------------- | ------------------------------------- |
-| ![Home](./screenshots/2.png) | ![Filters](./screenshots/1.png) |
+| ![Home](./screenshot/2.png) | ![Filters](./screenshot/1.png) |
 
 |  Footer View                    |  SearchFilter View                 |
 | ------------------------------- | ------------------------------------- |
-| ![Home](./screenshots/home.png) | ![Filters](./screenshots/3.png) |
+| ![Home](./screenshot/home.png) | ![Filters](./screenshot/3.png) |
 
 |  Footer View                    |  Noproduct filtred View                 |
 | ------------------------------- | ------------------------------------- |
-| ![Home](./screenshots/5.png) | ![Filters](./screenshots/4.png) |
+| ![Home](./screenshot/5.png) | ![Filters](./screenshot/4.png) |
 
 ## 🚀 Getting Started
 
