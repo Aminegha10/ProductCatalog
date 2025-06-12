@@ -10,7 +10,6 @@ import {
 
 const sortOptions = [
   { value: "featured", label: "Featured", description: "Recommended for you" },
-  { value: "newest", label: "Newest First", description: "Latest arrivals" },
   {
     value: "price-low",
     label: "Price: Low to High",
@@ -21,7 +20,6 @@ const sortOptions = [
     label: "Price: High to Low",
     description: "Premium first",
   },
-  { value: "rating", label: "Highest Rated", description: "Best reviews" },
 ];
 
 export default function SortDropdown({ sortBy, setSortBy }) {
